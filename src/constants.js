@@ -1,3 +1,14 @@
+export const PLAYERS = {
+  X: "Player 1",
+  O: "Player 2",
+};
+
+export const INITAL_GAME_BOARD = [
+  [null, null, null],
+  [null, null, null],
+  [null, null, null],
+];
+
 export const WINNING_COMBINATIONS = [
   [
     { row: 0, column: 0 },

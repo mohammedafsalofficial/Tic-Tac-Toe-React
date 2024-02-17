@@ -2,14 +2,8 @@ import { useState } from "react";
 import GameBoard from "./components/GameBoard.jsx";
 import Player from "./components/Player.jsx";
 import Log from "./components/Log.jsx";
-import { WINNING_COMBINATIONS } from "./winningCombinations.js";
 import GameOver from "./components/GameOver.jsx";
-
-const initialGameBoard = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
+import { INITAL_GAME_BOARD, PLAYERS, WINNING_COMBINATIONS } from "./constants.js";
 
 function deriveActivePlayer(gameTurns) {
   let currentPlayer = "X";
@@ -22,15 +16,12 @@ function deriveActivePlayer(gameTurns) {
 }
 
 export default function App() {
-  const [players, setPlayers] = useState({
-    X: "Player 1",
-    Y: "Player 2",
-  });
+  const [players, setPlayers] = useState(PLAYERS);
   const [gameTurns, setGameTurns] = useState([]);
 
   const activePlayer = deriveActivePlayer(gameTurns);
 
-  const gameBoard = [...initialGameBoard.map((array) => [...array])];
+  const gameBoard = [...INITAL_GAME_BOARD.map((array) => [...array])];
 
   for (const turn of gameTurns) {
     const { square, player } = turn;
@@ -88,13 +79,13 @@ export default function App() {
       <div id="game-container">
         <ol id="players" className="highlight-player">
           <Player
-            initialName="Player 1"
+            initialName={PLAYERS.X}
             symbol="X"
             isActive={activePlayer === "X"}
             onPlayerNameChange={handlePlayerNameChange}
           />
           <Player
-            initialName="Player 2"
+            initialName={PLAYERS.O}
             symbol="O"
             isActive={activePlayer === "O"}
             onPlayerNameChange={handlePlayerNameChange}
