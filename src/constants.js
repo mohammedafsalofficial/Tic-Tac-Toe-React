@@ -3,7 +3,7 @@ export const PLAYERS = {
   O: "Player 2",
 };
 
-export const INITAL_GAME_BOARD = [
+export const INITIAL_GAME_BOARD = [
   [null, null, null],
   [null, null, null],
   [null, null, null],
